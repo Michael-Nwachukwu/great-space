@@ -1,0 +1,288 @@
+ /* Google Fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+/* removing default background and shadow */
+.nerve{
+    box-shadow: none !important;
+    background: none !important;
+}
+
+.nervebar-links{
+    margin-left: 90px;
+}
+
+.nerve-color{
+    color: black !important;
+}
+
+
+
+/* search box design */
+.search-input{
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+    caret-color: blue; 
+    height: 50px !important; 
+    width: 300px;
+}
+
+
+
+/* signup/signin button design*/
+.cta {
+    border: none;
+    background: none;
+}
+.cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 10px;
+    padding-right: 15px;
+    text-transform: uppercase;
+}
+.cta svg {
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+}
+.cta:hover svg {
+    transform: translateX(0);
+}
+.cta:active svg {
+    transform: scale(0.9);
+}
+.hover-underline-animation {
+    position: relative;
+    color: black;
+    padding-bottom: 20px;
+}
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.login-signup-btn{
+    border-left: 1px solid black;
+}
+
+
+
+/* weather-showcase panel design */
+.weather-showcase{
+    height: 450px;
+    border-radius: 65px;
+    background: url(/images/Day/clear.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    position: relative;
+    -webkit-box-shadow:0px 10px 38px 35px rgba(62,66,66,0.18);
+    -moz-box-shadow: 0px 10px 38px 35px rgba(62,66,66,0.18);
+    box-shadow: 0px 10px 38px 35px rgba(62,66,66,0.18);
+    margin-bottom: 80px;
+    transition: 500ms;
+    opacity: 1;
+}
+
+#left{
+    margin-top: 160px;
+}
+.city-name{
+    font-size: 80px;
+    padding: 0;
+    margin: 0;
+}
+.temperature-panel{
+    background-color: rgb(109, 109, 245);
+    width: 140px;
+    height: 140px;
+    text-align: center;
+    border-radius: 0 30px 0 30px ;
+    position: absolute;
+    left: -70px;
+    top: 100px;
+}
+
+
+/* The switch - the degree style toggler*/
+.switch {
+    /* --moon-mask: ; */
+     font-size: 17px;
+     position: relative;
+     display: inline-block;
+     width: 3.5em;
+     height: 2em;
+    }
+    /* Hide default HTML checkbox */
+    .switch input {
+     opacity: 0;
+     width: 0;
+     height: 0;
+    }
+    /* The slider */
+    .slider {
+     position: absolute;
+     cursor: pointer;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #f4f4f5;
+     transition: .4s;
+     border-radius: 30px;
+    }
+    .slider:before {
+     position: absolute;
+     content: "";
+     height: 1.4em;
+     width: 1.4em;
+     border-radius: 20px;
+     left: 0.3em;
+     bottom: 0.3em;
+     background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
+     ;
+     transition: .4s;
+    }
+    
+    input:checked + .slider {
+     background-color: #303136;
+    }
+    
+    input:checked + .slider:before {
+     transform: translateX(1.5em);
+     background: #303136;
+     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -5px 0 0 #a3dafb;
+    }
+
+
+
+/* claymorphism design on forecast card */
+.clay{
+    border-radius: 35px;
+    height: 420px;
+    backdrop-filter: blur(3px); background-color: rgba(255, 255, 255, 0.055); box-shadow: 35px 35px 68px 0px rgba(127, 176, 176, 0.5), inset -7px -7px 16px 0px rgba(127, 176, 176, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.loop-card{
+    overflow:hidden;
+}
+
+
+/* dropdown button on navbar glass design */
+.dropdown-design{
+    background: white;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(236, 236, 241, 0.18);
+    border-radius: 30px;
+}
+
+
+/* video and text designs */
+.video-bg{
+    width: 100%;
+    object-fit:contain;
+}
+#background-video{
+    margin-top: 50px
+}
+.vid-sect{
+    background-color: #000000;
+    color: wheat;
+    height: 600px; 
+    border-radius: 50px;
+    margin: 10px 20px;
+    overflow: hidden;
+}
+.text-content{
+    margin-top: 50px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+   
+    
+    .clay{
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+    .city-name{
+        font-size:35px ;
+    }
+    .sunrise{
+        font-size:15px ;
+
+    }
+    .stats{
+        margin-top: 20px;
+        /* padding-bottom: 60px; */
+    }
+    .left{
+        margin-bottom: 20px;
+    }
+    .weather-showcase{
+        position: relative;
+    }
+    .now{
+        position: absolute;
+    }
+    .video-bg{
+        width: 100%;
+    }
+    .display-vid{
+        display: flex;
+        flex-direction: column;
+    }
+    .text-content{
+        text-align: start;
+    }
+    #background-video{
+        margin-top: -30px;
+        height: 300px;
+        margin-left: 50px;
+    }
+    #locationinput{
+        margin-bottom: 25px;
+        width: 70%;
+    }
+    .temperature-panel{
+        left: -10px;
+        top: 50px;
+    }
+    .temperature{
+        font-size: 30px;
+        padding-top: 17px;
+    }
+    .city-details{
+       margin-left: -25px;
+    }
+    .time{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 12px;
+    }
+
+}
