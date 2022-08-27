@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css" rel="stylesheet"/>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="mainWeather.css">
+
+    <title>Weather Bureau</title>
+</head>
+<body>
+    <!-- navigation bar, custom class of nerve to remove background and shadow-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nerve fw-bold py-2">
+        <div class="container">
+
+            <!-- logo image -->
+            <img src="/images/images.png" width="80" height="80" alt="">
+
+            <!-- hamburger menu button  -->
+            <button class="navbar-toggler" style="color: black;" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarText">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+            </button>
+            
+            <!-- custom class of nerve-bar links -->
+            <div class="collapse navbar-collapse nervebar-links" id="navbarText">
+
+                <!-- navigator list items -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-6 ">
+
+                    <li class="nav-item mx-3 nerve-color ">
+                        <a class="nav-link active"  href="#">Home</a>
+                    </li>
+                    <li class="nav-item mx-3 nerve-color">
+                        <a class="nav-link" href="#">News&Blog</a>
+                    </li>
+
+                    <li class="nav-item dropdown mx-3 nerve-color">
+
+                        <!-- Dropdown list of popular Cities-->
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"  data-mdb-toggle="dropdown"> Cities </a>
+
+                        <ul class="dropdown-menu dropdown-design fs-6 cities">
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">New-York</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">California</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">Dubai</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">russia</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">Paris</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item p-3 city" href="#">Tokyo</a>
+                          </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+
+                <!-- risht side search bar and signmup button -->
+                <div class="navbar-text d-md-flex d-sm-row"> 
+
+                    <form class="d-flex me-4" id="locationinput">
+                        <input type="search" class="form-control search-input p-4"  placeholder="Enter Location"/>
+                       
+                        <!-- search icon beside search bar -->
+                        <a href="#" class="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search ms-3 mt-2" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </a>
+                    </form>
+                    <!-- sign in / sign-up button -->
+                    <button class="cta login-signup-btn ps-4 h-75 my-auto">
+                        <span class="hover-underline-animation"> Signup/Login</span>
+                        <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
+                          <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Weathe Showcase Panel -->
+    <section class="mt-4" >
+        <div class="container">
+
+            <!-- Main weather Card with custom class of weather-showcase -->
+            <div class="card text-white weather-card weather-showcase">
+
+                <div class="card-img-overlay now">
+
+                    <div class="d-md-flex d-sm-col justify-content-between align-items-end ">
+
+                        <div class="left ms-5" id="left">
+
+                            <!-- absolute positioned temperature display panel, houses the degree change toggler -->
+                            <div class="temperature-panel" data-mdb-toggle="tooltip" data-mdb-placement="right"       title="Toggle CheckBox to change degree style to farenheit">
+                                <div class="px-1">
+                                    <span class="fs-4 pt-2 degree">
+                                        &#176;C?
+                                    </span>
+                                    <!-- degree style toggler -->
+                                    <label class="switch mt-4 mb-3">
+                                        <input class="change-degree-style" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <!-- Actual Temperature -->
+                                <h2 class="temperature mt-2">16 <span> <sup id="degree-style">&#176;F</sup></h1> </span> 
+                            </div>
+    
+                            <div>
+                                <!-- Dummy condition icon -->
+                                <img class="current-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="80" height="80" alt=""> 
+                                <small class="weather-description lead ps-3">weather description</small>
+                            </div>
+                            
+                        <!-- Custom css class Right for items on the left side of weather showcase diplaying city name and details -->
+                            <div class="city-details">
+                                <!-- Active City -->
+                                <h1 class="city-name fw-bold">London</h1>
+
+                                <small class="fs-5 district" style="font-family: monospace;">
+                                    DISTRICT
+                                </small>
+                                <br>
+                                <small>
+                                    <span class="time">06:09</span>
+                                    
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Custom css class Right for items on the right side of weather showcase -->
+                        <div class="right align-self-end me-5">
+                            <!-- stats custom class -->
+                            <div class="d-flex stats">
+                                <div class="humidity-element d-flex">
+                                    <span class="px-3">
+                                        <img src="/images/humidity.png" height="65" width="65" alt="">
+                                    </span>
+                                    <span>
+                                        <h6>Humidity</h6>
+                                        <h2 class="humidity">25%</h2>
+                                    </span>
+                                </div>
+                                <div class="sunrise-element d-flex ms-5">
+                                    <span class="px-3">
+                                        <img src="/images/sun.png" height="65" width="65" alt="">
+                                    </span>
+                                    <span>
+                                        <h6>Sunrise</h6>
+                                        <h2 class="sunrise">6:10am</h2>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="container">
+            <!-- custom class kardz - sub parent container for the 3 cards -->
+            <div class="row row-cols-1 row-cols-lg-3 kardz">
+
+                <!-- Forecast Panel -->
+                <div class="col">
+                    <!-- custom class clay for claymorphism effect -->
+                    <div class="card clay">
+
+                        <div class="card-header"> 
+                            <h3 class="pt-3">FORECASTS</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <!-- tomorrows forecast, custom class of tomorrow -->
+                            <div class="tomorrow p-2">
+
+                                <div class="d-flex">
+
+                                    <div class="text mb-3">
+                                        <h4 style="margin-bottom: 0; padding-bottom: 0;">Tomorrow</h4>
+                                        <small class="tomorrow-date">Date</small>
+                                    </div>
+
+                                    <div class="ms-auto">
+                                        <img class="tomorrow-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="40" height="40" alt=""> 
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex">
+
+                                    <div class="lead">
+                                        <small class="tomorrow-weather-condition">text text text</small>
+                                    </div>
+
+                                    <div class="ms-auto">
+                                        <h2 class="tomorrow-temperature">16<sup>&#176;</sup></h2>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- next tomorrows forecast, custom class of next-day -->
+                            <div class="next-day">
+
+                                <div class="d-flex">
+                                    
+                                    <div class="text mb-3">
+                                        <h4 style="margin-bottom: 0; padding-bottom: 0; margin-top: 15px;">Next Day</h4>
+                                        <small class="nextday-date">Date</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <img class="nextday-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="40" height="40" alt=""> 
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex">
+
+                                    <div class="lead">
+                                        <small class="nextday-weather-condition">text text text</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h2 class="nextday-temperature">16<sup>&#176;</sup></h2>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- location map -->
+                <div class="col map mt-1">
+                    <div class="mapouter  cards-size">
+                        <div class="gmap_canvas">
+                            <iframe style=" border-radius: 35px;" width="100%" height="420"  id="gmap_canvas" src="https://maps.google.com/maps?q=lagos&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            <a href="https://fmovies-online.net"></a>
+                            <br>
+                            <a href="https://www.embedgooglemap.net"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- detail panel displaying multiple locations in 10secs -->
+                <div class="col">
+                    <div class=" align-items-center loop-card">
+
+                        <div class="bg-image" style="border-radius: 35px; height: 420px;">
+                            <img src="/images/photo_2022-06-13_09-15-54.jpg"
+                            class="card-img" alt="weather" />
+                        <div>
+
+                        <div class="card-img-overlay text-white p-5">
+                            <h4 class="mb-0 random-city-name">Juneau, Alaska, US</h4>
+                            <p class="display-2 my-3 random-city-temperature">1.28°C</p>
+                            <p class="mb-2 random-city-feels">Feels Like: <strong>-1.08 °C</strong></p>
+                            <h5 class="random-city-condition">Snowy</h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- video display and text custom class of vid-sect & display-vid -->
+    <section class="vid-sect" >
+        <div class="container">
+            <div class="d-flex display-vid">
+                <div class="video-bg mt-5">
+                    <video autoplay loop muted id="background-video" style="max-width: 100%;">
+                        <source src="/images/animated_medium20210125-22683-10iko9p.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="text-content align-self-center ms-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis quam saepe velit neque assumenda, dolores, provident accusamus iure dolore similique, unde nemo adipisci! Dicta in sapiente earum accusantium nobis autem?<br>
+                    <button class="btn-outline-success mt-3" style="background-color: black;">Click Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
+
+<!-- custom js  -->
+<script src="/mainWeather.js"></script>
+
+</html>
