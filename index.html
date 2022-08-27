@@ -1,314 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/main.css">
 
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <!-- FA -->
+    <script src="https://kit.fontawesome.com/f6f80a779f.js" crossorigin="anonymous"></script>
 
-    <!-- custom css -->
-    <link rel="stylesheet" href="mainWeather.css">
 
-    <title>Weather Bureau</title>
+    <title>Document</title>
 </head>
-<body>
-    <!-- navigation bar, custom class of nerve to remove background and shadow-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nerve fw-bold py-2">
-        <div class="container">
 
-            <!-- logo image -->
-            <img src="/images/images.png" width="80" height="80" alt="">
+<body class="flex flex-col lg:flex-row">
 
-            <!-- hamburger menu button  -->
-            <button class="navbar-toggler" style="color: black;" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarText">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                  </svg>
-            </button>
-            
-            <!-- custom class of nerve-bar links -->
-            <div class="collapse navbar-collapse nervebar-links" id="navbarText">
+    <!-- left side -->
+    <section class="relative bg-gray-200 basis-9/12">
 
-                <!-- navigator list items -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-6 ">
+        <!-- navbar -->
+        <nav class="container mx-auto p-6">
+            <div class="flex items-center justify-between">
+                <!-- logo -->
+                <div class=" flex flex-row items-center space-x-2.5">
 
-                    <li class="nav-item mx-3 nerve-color ">
-                        <a class="nav-link active"  href="#">Home</a>
-                    </li>
-                    <li class="nav-item mx-3 nerve-color">
-                        <a class="nav-link" href="#">News&Blog</a>
-                    </li>
+                    <img src="/image/logo1.svg" class="h-12" alt="">
 
-                    <li class="nav-item dropdown mx-3 nerve-color">
+                    <h1 class="text-3xl text-black font-bold logo">Budget</h1>
 
-                        <!-- Dropdown list of popular Cities-->
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"  data-mdb-toggle="dropdown"> Cities </a>
+                </div>
 
-                        <ul class="dropdown-menu dropdown-design fs-6 cities">
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">New-York</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">California</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">Dubai</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">russia</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">Paris</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item p-3 city" href="#">Tokyo</a>
-                          </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
+                <!-- links -->
+                <div class="flex space-x-6 md:space-x-12 md:text-xl ">
+                    <a href="#" class=" font-bold">Overview</a>
+                    <a href="#" class=" text-slate-600 hidden lg:block">Investment</a>
+                    <a onclick="document.getElementById('mydiv').style.display='block'"
+                        class=" text-slate-600">Calculator</a>
+                </div>
+            </div>
+        </nav>
 
-                <!-- risht side search bar and signmup button -->
-                <div class="navbar-text d-md-flex d-sm-row"> 
+        <!-- wallet and calendar -->
+        <div class="container mx-auto p-6">
+            <div class="flex flex-row items-center justify-between">
+                <!-- wallet Balance-->
+                <div class="flex flex-row items-center space-x-5 ">
 
-                    <form class="d-flex me-4" id="locationinput">
-                        <input type="search" class="form-control search-input p-4"  placeholder="Enter Location"/>
-                       
-                        <!-- search icon beside search bar -->
-                        <a href="#" class="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search ms-3 mt-2" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg>
-                        </a>
-                    </form>
-                    <!-- sign in / sign-up button -->
-                    <button class="cta login-signup-btn ps-4 h-75 my-auto">
-                        <span class="hover-underline-animation"> Signup/Login</span>
-                        <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
-                          <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+                    <img src="/image/wallet.svg" class="h-20 w-20" alt="">
+
+                    <div class="space-y-1 grid justify-items-start">
+                        <h1 class="font-bold text-cyan-600 text-2xl md:text-3xl">Wallet Balance</h1>
+                        <span class="text-lg flex flex-row items-center">
+                            <img src="/image/dollar-symbol-svgrepo-com.svg" class="h-8 w-8" alt="">
+                            <span id="balance-amount" class="text-2xl font-bold text-emerald-900">
+                                0
+                            </span>
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- calendar -->
+                <!-- dropdown container -->
+                <div class="dropdown hidden md:block">
+                    <!-- drop btn -->
+                    <button
+                        class="dropbtn bg-slate-50 p-6 flex flex-row justify-between items-center space-x-4  text-black hover:bg-yellow-600 hover:text-white ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-calendar" viewBox="0 0 16 16">
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                         </svg>
+
+                        <span>Calendar</span>
+
+                        <i class="fa fa-caret-down ml-3"></i>
                     </button>
 
+                    <!-- drop content -->
+                    <div class="dropdown-content">
+
+                        <div class="wrapper">
+
+                            <div class="container-calendar">
+                                <h3 id="monthAndYear"></h3>
+
+                                <div class="button-container-calendar">
+                                    <button id="previous" onclick="previous()">&#8249;</button>
+                                    <button id="next" onclick="next()">&#8250;</button>
+                                </div>
+
+                                <table class="table-calendar" id="calendar" data-lang="en">
+                                    <thead id="thead-month"></thead>
+                                    <tbody id="calendar-body"></tbody>
+                                </table>
+
+                                <div class="footer-container-calendar">
+                                    <label for="month">Jump To: </label>
+                                    <select id="month" onchange="jump()">
+                                        <option value=0>Jan</option>
+                                        <option value=1>Feb</option>
+                                        <option value=2>Mar</option>
+                                        <option value=3>Apr</option>
+                                        <option value=4>May</option>
+                                        <option value=5>Jun</option>
+                                        <option value=6>Jul</option>
+                                        <option value=7>Aug</option>
+                                        <option value=8>Sep</option>
+                                        <option value=9>Oct</option>
+                                        <option value=10>Nov</option>
+                                        <option value=11>Dec</option>
+                                    </select>
+                                    <select id="year" onchange="jump()"></select>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Weathe Showcase Panel -->
-    <section class="mt-4" >
-        <div class="container">
-
-            <!-- Main weather Card with custom class of weather-showcase -->
-            <div class="card text-white weather-card weather-showcase">
-
-                <div class="card-img-overlay now">
-
-                    <div class="d-md-flex d-sm-col justify-content-between align-items-end ">
-
-                        <div class="left ms-5" id="left">
-
-                            <!-- absolute positioned temperature display panel, houses the degree change toggler -->
-                            <div class="temperature-panel" data-mdb-toggle="tooltip" data-mdb-placement="right"       title="Toggle CheckBox to change degree style to farenheit">
-                                <div class="px-1">
-                                    <span class="fs-4 pt-2 degree">
-                                        &#176;C?
-                                    </span>
-                                    <!-- degree style toggler -->
-                                    <label class="switch mt-4 mb-3">
-                                        <input class="change-degree-style" type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                                <!-- Actual Temperature -->
-                                <h2 class="temperature mt-2">16 <span> <sup id="degree-style">&#176;F</sup></h1> </span> 
-                            </div>
-    
-                            <div>
-                                <!-- Dummy condition icon -->
-                                <img class="current-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="80" height="80" alt=""> 
-                                <small class="weather-description lead ps-3">weather description</small>
-                            </div>
-                            
-                        <!-- Custom css class Right for items on the left side of weather showcase diplaying city name and details -->
-                            <div class="city-details">
-                                <!-- Active City -->
-                                <h1 class="city-name fw-bold">London</h1>
-
-                                <small class="fs-5 district" style="font-family: monospace;">
-                                    DISTRICT
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="time">06:09</span>
-                                    
-                                </small>
-                            </div>
-                        </div>
-
-                        <!-- Custom css class Right for items on the right side of weather showcase -->
-                        <div class="right align-self-end me-5">
-                            <!-- stats custom class -->
-                            <div class="d-flex stats">
-                                <div class="humidity-element d-flex">
-                                    <span class="px-3">
-                                        <img src="/images/humidity.png" height="65" width="65" alt="">
-                                    </span>
-                                    <span>
-                                        <h6>Humidity</h6>
-                                        <h2 class="humidity">25%</h2>
-                                    </span>
-                                </div>
-                                <div class="sunrise-element d-flex ms-5">
-                                    <span class="px-3">
-                                        <img src="/images/sun.png" height="65" width="65" alt="">
-                                    </span>
-                                    <span>
-                                        <h6>Sunrise</h6>
-                                        <h2 class="sunrise">6:10am</h2>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- frequent bills -->
+        <div class="px-6 mx-auto">
+                <div class="grid grid-cols-3 lg:grid-cols-6 gap-4">
+                    <!-- 01 -->
+                    <div data-freq
+                        class="flex justify-between items-center bg-transparent px-2 py-4 border-solid border-2 border-slate-400 rounded-2xl hover:bg-yellow-600">
+                        <span>School</span>
+                        <span class="bg-slate-300">
+                            <p class="px-2 py-1">+</p>
+                        </span>
                     </div>
+                    <!-- 02 -->
+                    <div data-freq class="flex justify-between items-center bg-transparent px-2 py-4 border-solid border-2 border-slate-400 rounded-2xl hover:bg-yellow-600">
+                        <span>Phone</span>
+                        <span class="bg-slate-300">
+                            <p class="px-2 py-1 ">+</p>
+                        </span>
+                    </div>
+                    <!-- 03 -->
+                    <div data-freq
+                        class="flex justify-between items-center bg-transparent p-4 border-solid border-2 border-slate-400 rounded-2xl hover:bg-yellow-600">
+                        <span>Gas</span>
+                        <span class="bg-slate-300">
+                            <p class="px-2 py-1 ">+</p>
+                        </span>
+                    </div>
+                    <!-- 04 -->
+                    <div data-freq
+                        class="flex justify-between items-center bg-transparent px-2 py-4 border-solid border-2 border-slate-400 rounded-2xl hover:bg-yellow-600">
+                        <span>Grocery</span>
+                        <span class="bg-slate-300">
+                            <p class="px-2 py-1 ">+</p>
+                        </span>
+                    </div>
+                    <!-- 05 -->
+                    <div data-freq
+                        class="flex justify-between items-center bg-transparent px-2 py-4 border-solid border-2 border-slate-400 rounded-2xl hover:bg-yellow-600">
+                        <span>Internet</span>
+                        <span class="bg-slate-300">
+                            <p class="px-2 py-1">+</p>
+                        </span>
+                    </div>
+                    <!-- create expense -->
+                    <button onclick="document.getElementById('modal').style.display='block'"
+                        class="flex items-center bills px-4 border-solid border-2 border-slate-400 rounded-2xl"
+                        id="openBtn">
+                        <span class=" mx-auto">
+                            <i class="fa-solid fa-plus text-3xl p-2 md:p-4 "></i>
+                            <!-- <p class="py-4 text-3xl">+</p> -->
+                        </span>
+                    </button>
                 </div>
-              </div>
         </div>
+
+        <!-- Content -->
+        <div class="container mx-auto p-4">
+            <!-- date and values -->
+            <div class="flex justify-between items-center mt-5 mb-3">
+                <!-- date -->
+                <div  class="text-slate-700 font-bold text-xl md:text-2xl">
+                   <!-- date -->
+                  <p id="date"></p>
+                </div>
+
+                <!-- values -->
+                <div class="flex flex-col sm:flex-row justify-evenly text-l md:text-lg">
+                    <span class="text-slate-700">Number of transaction: <span id="not">0</span></span>
+                    <span class="text-slate-700 pl-6">Value: $ <span id="expense-amount">0</span> </span>
+                </div>
+            </div>
+
+            <!-- expense List -->
+            <div id="injectable" class="flex flex-col space-y-5 sm:p-4 mines">
+                <!-- item injected-->
+                
+               
+            </div>
+        </div>
+
     </section>
 
-    <section class="mt-5">
-        <div class="container">
-            <!-- custom class kardz - sub parent container for the 3 cards -->
-            <div class="row row-cols-1 row-cols-lg-3 kardz">
-
-                <!-- Forecast Panel -->
-                <div class="col">
-                    <!-- custom class clay for claymorphism effect -->
-                    <div class="card clay">
-
-                        <div class="card-header"> 
-                            <h3 class="pt-3">FORECASTS</h3>
+    <!-- right side -->
+    <aside class="relative bg-slate-50 basis-3/12 lg:sticky top-0 right-0 h-screen max-h-screen">
+        <div class="w-full px-5">
+            <!-- notifs and user -->
+            <div class="justify-end space-x-6 items-center p-3 hidden md:flex">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="bg-yellow-600 rounded-lg p-3">
+                    <i class="fa-solid fa-user-large text-xl text-slate-50"></i>
+                </span>
+            </div>
+            
+            <!-- Budget Form -->
+            <form>
+                <div class="flex flex-col mt-3 space-y-3 mycont p-5">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-left">
+                            Please Input Your Budget
+                        </h2> 
+                        <div class="flex justify-end space-x-3 items-center md:hidden">
+                            <i class="fa-regular fa-bell text-xl"></i>
+                            <span class="bg-yellow-600 rounded-lg p-2">
+                                <i class="fa-solid fa-user-large text-lg text-slate-50"></i>
+                            </span>
                         </div>
+                    </div>
+                   
+                    <input type="text" id="budget-input"
+                        class="py-3 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                    <button id="budget-submit"
+                        class="py-2 rounded-full bg-yellow-600 transition duration-150 ease-out hover:ease-in hover:bg-slate-400">Add
+                        Budget
+                    </button>
+                </div>
+            </form>
 
-                        <div class="card-body">
-                            <!-- tomorrows forecast, custom class of tomorrow -->
-                            <div class="tomorrow p-2">
-
-                                <div class="d-flex">
-
-                                    <div class="text mb-3">
-                                        <h4 style="margin-bottom: 0; padding-bottom: 0;">Tomorrow</h4>
-                                        <small class="tomorrow-date">Date</small>
-                                    </div>
-
-                                    <div class="ms-auto">
-                                        <img class="tomorrow-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="40" height="40" alt=""> 
-                                    </div>
-
-                                </div>
-
-                                <div class="d-flex">
-
-                                    <div class="lead">
-                                        <small class="tomorrow-weather-condition">text text text</small>
-                                    </div>
-
-                                    <div class="ms-auto">
-                                        <h2 class="tomorrow-temperature">16<sup>&#176;</sup></h2>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <!-- next tomorrows forecast, custom class of next-day -->
-                            <div class="next-day">
-
-                                <div class="d-flex">
-                                    
-                                    <div class="text mb-3">
-                                        <h4 style="margin-bottom: 0; padding-bottom: 0; margin-top: 15px;">Next Day</h4>
-                                        <small class="nextday-date">Date</small>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <img class="nextday-icon" src="/images/cloud-computing-ui-svgrepo-com.svg" width="40" height="40" alt=""> 
-                                    </div>
-
-                                </div>
-
-                                <div class="d-flex">
-
-                                    <div class="lead">
-                                        <small class="nextday-weather-condition">text text text</small>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h2 class="nextday-temperature">16<sup>&#176;</sup></h2>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+            <!-- wallets -->
+            <div class="my-5">
+                <!-- wallets -->
+                <div class="flex flex-row justify-between items-center mb-5">
+                    <h1 class="text-2xl font-bold">Wallets</h1>
+                    <div class="py-1 px-2 border-dashed border-2 border-slate-400 rounded-xl">
+                        <i class="fa-solid fa-plus text-slate-400"></i>
                     </div>
                 </div>
 
-                <!-- location map -->
-                <div class="col map mt-1">
-                    <div class="mapouter  cards-size">
-                        <div class="gmap_canvas">
-                            <iframe style=" border-radius: 35px;" width="100%" height="420"  id="gmap_canvas" src="https://maps.google.com/maps?q=lagos&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            <a href="https://fmovies-online.net"></a>
-                            <br>
-                            <a href="https://www.embedgooglemap.net"></a>
-                        </div>
+                <!-- icons -->
+                <!-- budget wallet+ -->
+                <div class="flex items-center space-x-6">
+                    <!-- icon -->
+                    <div class="bills shadow-2xl p-3 rounded-xl">
+                        <img src="/image/money-svgrepo-com.svg" class="h-7 w-7 " alt="">
+                    </div>
+                    <!-- text -->
+                    <div>
+                        <h1 class="text-lg font-bold">Budget Wallet</h1>
+
+                        <p class="text-slate-400 text-lg font-bold">
+                            $ <span id="budget-amount">0</span>
+                        </p>
                     </div>
                 </div>
 
-                <!-- detail panel displaying multiple locations in 10secs -->
-                <div class="col">
-                    <div class=" align-items-center loop-card">
+                <!-- Investment -->
+                <div class="flex items-center space-x-6 mt-5">
+                    <!-- icon -->
+                    <div class="bills shadow-2xl p-3 rounded-xl">
+                        <img src="/image/chart-bar-chart-svgrepo-com.svg" class="h-7 w-7 " alt="">
+                    </div>
+                    <!-- text -->
+                    <div>
+                        <h1 class="text-lg font-bold">Investments</h1>
 
-                        <div class="bg-image" style="border-radius: 35px; height: 420px;">
-                            <img src="/images/photo_2022-06-13_09-15-54.jpg"
-                            class="card-img" alt="weather" />
+                        <p class="text-slate-400 text-lg font-bold">
+                            $2,000
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- categories -->
+            <div class="mt-5">
+                <!-- Categories -->
+                <div class="flex flex-row justify-between items-center">
+                    <h1 class="text-2xl font-bold">Categories</h1>
+                    <div class="py-1 px-2 border-dashed border-2 border-slate-400 rounded-xl">
+                        <i class="fa-solid fa-plus text-slate-400"></i>
+                    </div>
+                </div>
+
+                <!-- icons -->
+                <div class="flex flex-row justify-evenly space-x-2 mt-4">
+                    <!-- Bills -->
+                    <div class="flex flex-col ">
+                        <!-- icon -->
+                        <div class="bg-green-700 p-3 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-receipt text-white" viewBox="0 0 16 16">
+                                <path
+                                    d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                <path
+                                    d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </div>
+                        <!-- text -->
                         <div>
+                            <h1 class="text-lg font-bold">Bills</h1>
 
-                        <div class="card-img-overlay text-white p-5">
-                            <h4 class="mb-0 random-city-name">Juneau, Alaska, US</h4>
-                            <p class="display-2 my-3 random-city-temperature">1.28°C</p>
-                            <p class="mb-2 random-city-feels">Feels Like: <strong>-1.08 °C</strong></p>
-                            <h5 class="random-city-condition">Snowy</h5>
+                            <p class="text-slate-400 text-lg font-bold">
+                                $ <span id="bill-total" > 0 </span>
+                            </p>
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Education -->
+                    <div class="flex flex-col">
+                        <!-- icon -->
+                        <div class="bg-orange-700 p-3 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-mortarboard text-white" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
+                                <path
+                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
+                            </svg>
+                        </div>
+                        <!-- text -->
+                        <div>
+                            <h1 class="text-lg font-bold">Education</h1>
 
-    <!-- video display and text custom class of vid-sect & display-vid -->
-    <section class="vid-sect" >
-        <div class="container">
-            <div class="d-flex display-vid">
-                <div class="video-bg mt-5">
-                    <video autoplay loop muted id="background-video" style="max-width: 100%;">
-                        <source src="/images/animated_medium20210125-22683-10iko9p.mp4" type="video/mp4">
-                    </video>
+                            <p class="text-slate-400 text-lg font-bold">
+                                $ <span id="education-total" > 0 </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- utility -->
+                    <div class="flex flex-col ">
+                        <!-- icon -->
+                        <div class="bg-pink-700 p-3 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-plugin text-white" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a7 7 0 1 1 2.898 5.673c-.167-.121-.216-.406-.002-.62l1.8-1.8a3.5 3.5 0 0 0 4.572-.328l1.414-1.415a.5.5 0 0 0 0-.707l-.707-.707 1.559-1.563a.5.5 0 1 0-.708-.706l-1.559 1.562-1.414-1.414 1.56-1.562a.5.5 0 1 0-.707-.706l-1.56 1.56-.707-.706a.5.5 0 0 0-.707 0L5.318 5.975a3.5 3.5 0 0 0-.328 4.571l-1.8 1.8c-.58.58-.62 1.6.121 2.137A8 8 0 1 0 0 8a.5.5 0 0 0 1 0Z" />
+                            </svg>
+                        </div>
+                        <!-- text -->
+                        <div>
+                            <h1 class="text-lg font-bold">Utility</h1>
+
+                            <p class="text-slate-400 text-lg font-bold">
+                                $ <span id="utility-total" > 0 </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- shopping -->
+                    <div class="flex flex-col">
+                        <!-- icon -->
+                        <div class="bg-blue-700 p-3 rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-cart-dash text-white" viewBox="0 0 16 16">
+                                <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
+                                <path
+                                    d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg>
+                        </div>
+                        <!-- text -->
+                        <div>
+                            <h1 class="text-lg font-bold">Shopping</h1>
+
+                            <p class="text-slate-400 text-lg font-bold">
+                                $ <span id="shopping-total" > 0 </span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-content align-self-center ms-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis quam saepe velit neque assumenda, dolores, provident accusamus iure dolore similique, unde nemo adipisci! Dicta in sapiente earum accusantium nobis autem?<br>
-                    <button class="btn-outline-success mt-3" style="background-color: black;">Click Me</button>
+
+
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- calculator -->
+    <div id="mydiv" class="wrapper absolute" draggable="true">
+        <div id="mydivheader" class="bg-yellow-600">
+            <div class="flex pl-3 justify-between">
+                <div class="px-4 py-2">
+                    Drag Around
+                </div>
+                <button onclick="document.getElementById('mydiv').style.display='none'" class="bg-red-700 py-2 px-4">
+                    X
+                </button>
+            </div>
+        </div>
+
+        <div class="calculator">
+            <div class="calculator-grid">
+                <div class="output">
+                    <div class="current-operand">0</div>
+                </div>
+                <button class="span-two number clear">AC</button>
+                <button class="delete">DEL</button>
+                <button data-type="operator" class="divide">/</button>
+                <button data-type="number" class="one">1</button>
+                <button data-type="number" class="two">2</button>
+                <button data-type="number" class="three">3</button>
+                <button data-type="operator" class="times">X</button>
+                <button data-type="number" class="four">4</button>
+                <button data-type="number" class="five">5</button>
+                <button data-type="number" class="six">6</button>
+                <button data-type="operator" class="plus">+</button>
+                <button data-type="number" class="seven">7</button>
+                <button data-type="number" class="eight">8</button>
+                <button data-type="number" class="nine">9</button>
+                <button data-type="operator" class="minus">-</button>
+                <button data-type="number" class="decimal">.</button>
+                <button data-type="number" class="zero">0</button>
+                <button data-type="equals" class="span-two equals">=</button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal relative z-10" id="modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                <div
+                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                    <form>
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="flex flex-col mt-8 space-y-5 p-5">
+                                <div>
+                                    <h2 class="text-left text-xl">
+                                        Please Enter Your Expense
+                                    </h2>
+
+                                    <div class="mt-5">
+                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                            <input type="text" name="title" id="expense-input"
+                                                class="border-2 border-red-700 block w-full py-4 pl-7 pr-12 sm:text-sm expenseInput"
+                                                placeholder="Expense title">
+                                            <div class="absolute top-0 right-0 flex items-center">
+                                                <select id="categories" class="h-full py-4 pl-4 pr-7 border-2 bg-red-700 text-white sm:text-sm rounded-md">
+                                                    <option value="bills">Bills</option>
+                                                    <option value="education">Education</option>
+                                                    <option value="utility">Utility</option>
+                                                    <option value="shopping">Shopping</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <h2 class="text-left text-xl">
+                                        Please Enter Expense Amount
+                                    </h2>
+                                    <input type="text" id="amount-input"
+                                        class="expenseInput py-4 block w-full mt-5 pl-7 pr-12 sm:text-sm border-red-700 rounded-md"
+                                        placeholder="0.00">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button onclick="document.getElementById('modal').style.display='none'" type="button" id="expense-submit"
+                                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2  bg-red-700 transition duration-150 ease-out hover:ease-in hover:bg-slate-400 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Add
+                                Expense</button>
+                            <button onclick="document.getElementById('modal').style.display='none';" type="button"
+                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
 </body>
+<script src="/jqInit.js"></script>
+<script src="/script.js"></script>
 
-<!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
-
-<!-- custom js  -->
-<script src="/mainWeather.js"></script>
 
 </html>
